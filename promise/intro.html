@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise 异步杀手</title>
+</head>
+<body>
+    <script>
+    //js是一个充满了异步的语言
+    //异步带来一个问题，不能按代码顺序来执行
+    //直觉的困难
+    //顺序执行，阻塞的效果
+    //Promise让我们解决异步问题
+    //使得可以同步，代码执行顺序可以顺序执行。
+    //resolve 当异步事件，ajax，耗时的任务 执行完成后，调用resolve解决了，在这时，接着做下一个任务。
+    //reject 失败
+    
+    const p = new Promise((resolve, reject) => {
+      //函数体内封装着耗时的异步事件或任务。
+      setTimeout(function(){
+       console.log('PDD太骚');
+       //resolve();
+       reject('PDD崩了');
+    },2000)
+    })
+    p.then(()=>{
+       console.log('55开好牛逼');
+    }).catch(err => {
+        console.error(err);
+    })
+    </script>
+</body>
+</html>
